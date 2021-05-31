@@ -6,6 +6,6 @@ def load_sequence(path):
     """
     try:
         with open(path) as sequence_file:
-            return sequence_file.readline()
-    except IOError as err:
-        print('Error: %s' % err)
+            return sequence_file.readline().strip()
+    except IOError:
+        raise Exception('File error')
