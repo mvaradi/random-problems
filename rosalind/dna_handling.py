@@ -36,4 +36,7 @@ class DNA(object):
         }
         return bases
 
+    def count_gc_content(self):
+        return (self.dna_seq.count('G') + self.dna_seq.count('C')) / len(self.dna_seq)
+
 
