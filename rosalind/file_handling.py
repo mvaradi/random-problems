@@ -9,7 +9,7 @@ class FileHandler():
          self.data = None
 
     def __repr__(self):
-        return f'Opened {self.path}'
+        return f'{type(self).__name__}(path="{self.path}")'
 
     def _open_file(self):
         """"
