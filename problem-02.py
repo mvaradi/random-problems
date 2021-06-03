@@ -12,7 +12,7 @@ Return: The reverse complement sc of s.
 
 import sys
 from rosalind.file_handling import load_sequence
-from rosalind.dna_handling import DNA
+from rosalind.sequence_manipulation import DNA
 
 dna = DNA(load_sequence(sys.argv[1]))
 dna.complement_sequence()
