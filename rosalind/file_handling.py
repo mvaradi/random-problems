@@ -24,16 +24,33 @@ class FileHandler():
     def _close_file(self):
         """
         Close a file
+        :return: None;
         """
         self.input_file.close()
 
     def load_sequence(self):
         """
-        Simple function to get a sequence from a file that only has one line
-        :param path: String; path to the file
+        Get a sequence from a file that only has one line
         :return: String; a sequence
         """
         self._open_file()
         data = self.input_file.readline().strip()
+        self._close_file()
+        return data
+
+    def load_fasta(self):
+        """
+        Get all the sequences and their identifiers from a fasta file
+        :return: Dict; {identifier: sequence}
+        """
+        self._open_file()
+        data = {}
+        identifier = None
+        for line in self.input_file:
+            if line.startswith('>'):
+                identifier = line.split('>')[1].strip()
+                data[identifier] = ''
+            else:
+                data[identifier] += line.strip()
         self._close_file()
         return data
