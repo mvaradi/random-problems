@@ -1,5 +1,5 @@
 from unittest import TestCase
-from rosalind.dna_handling import DNA
+from rosalind.sequence_manipulation import DNA
 
 
 class TestDNAHandling(TestCase):
