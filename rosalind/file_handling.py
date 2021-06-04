@@ -54,3 +54,14 @@ class FileHandler():
                 data[identifier] += line.strip()
         self._close_file()
         return data
+
+    def load_sequence_pair(self):
+        """
+        Get a sequence from a file that only has one line
+        :return: Tuple; two sequences
+        """
+        self._open_file()
+        seq1 = self.input_file.readline().strip()
+        seq2 = self.input_file.readline().strip()
+        self._close_file()
+        return seq1, seq2
