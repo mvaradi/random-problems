@@ -15,5 +15,25 @@ class TestFileHandler(TestCase):
         os.system('rm tmp.txt')
 
     def test_load_sequence_no_file(self):
-        with self.assertRaises(Exception) as context:
+        with self.assertRaises(Exception):
             FileHandler('missing.txt').load_sequence()
+
+    def test_load_fasta(self):
+        os.system('echo ">asd" > tmp.fasta')
+        os.system('echo FOO >> tmp.fasta')
+        os.system('echo ">bar" >> tmp.fasta')
+        os.system('echo ASD >> tmp.fasta')
+        seq = FileHandler('tmp.fasta').load_fasta()
+        self.assertEqual(seq, {'asd': 'FOO', 'bar': 'ASD'})
+        os.system('rm tmp.fasta')
+
+    def test_load_sequence_pair(self):
+        os.system('echo FOO > tmp.txt')
+        os.system('echo BAR >> tmp.txt')
+        seq = FileHandler('tmp.txt').load_sequence_pair()
+        self.assertEqual(seq, ('FOO', 'BAR'))
+        os.system('rm tmp.txt')
+
+    def test_repr(self):
+        fh = FileHandler('path/to/file')
+        self.assertEqual(str(fh), 'FileHandler(path="path/to/file")')

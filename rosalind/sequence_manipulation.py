@@ -1,4 +1,4 @@
-class DNA(object):
+class DNA:
     """
     A class for performing basing transformation on a DNA sequence
 
@@ -15,6 +15,9 @@ class DNA(object):
             'G': 'C',
             'C': 'G'
         }
+
+    def __repr__(self):
+        return f'{type(self).__name__}(dna_seq="{self.dna_seq[0:10]}...")'
 
     def transcribe_dna(self):
         """
@@ -34,7 +37,7 @@ class DNA(object):
     def count_bases(self):
         """
         Count the 4 bases in a DNA sequence
-        :return: Dict
+        :return: Dict; the count of the 4 DNA bases
         """
         bases = {
             'A': self.dna_seq.count('A'),
@@ -47,7 +50,7 @@ class DNA(object):
     def count_gc_content(self):
         """
         Count the G/C content of a DNA sequence
-        :return: Float
+        :return: Float; the ratio of G/C bases in the sequence
         """
         return (self.dna_seq.count('G') + self.dna_seq.count('C')) / len(self.dna_seq)
 
@@ -61,6 +64,3 @@ class DNA(object):
             if self.dna_seq[i] != variant_seq[i]:
                 count += 1
         return count
-
-
-

@@ -24,3 +24,19 @@ class TestDNAHandling(TestCase):
         self.assertEqual(bases['C'], 12)
         self.assertEqual(bases['G'], 17)
         self.assertEqual(bases['T'], 21)
+
+    def test_count_gc_content(self):
+        dna = DNA('CGCGCGCGC')
+        self.assertEqual(dna.count_gc_content(), 1)
+        dna = DNA('AATTCCGG')
+        self.assertEqual(dna.count_gc_content(), 0.5)
+
+    def test_count_point_mutations(self):
+        dna_seq = 'GAGCCTACTAACGGGAT'
+        variant = 'CATCGTAATGACGGCCT'
+        dna = DNA(dna_seq=dna_seq)
+        self.assertEqual(dna.count_point_mutations(variant), 7)
+
+    def test_repr(self):
+        dna = DNA('GAGCCTACTAACGGGAT')
+        self.assertEqual(str(dna), 'DNA(dna_seq="GAGCCTACTA...")')

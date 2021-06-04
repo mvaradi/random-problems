@@ -1,12 +1,12 @@
-class FileHandler():
+class FileHandler:
     """
     This class handles input files in various formats
     """
 
     def __init__(self, path):
-         self.path = path
-         self.input_file = None
-         self.data = None
+        self.path = path
+        self.input_file = None
+        self.data = None
 
     def __repr__(self):
         return f'{type(self).__name__}(path="{self.path}")'
