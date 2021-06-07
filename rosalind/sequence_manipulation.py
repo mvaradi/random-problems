@@ -9,6 +9,9 @@ class Sequence:
         self.alphabet = []
         self.mapping = {}
 
+    def __repr__(self):
+        return f'{type(self).__name__}(seq="{self.seq[0:10]}...")'
+
     def count_bases(self):
         """
         Count the 4 bases in a DNA/RNA sequence
@@ -64,9 +67,6 @@ class DNA(Sequence):
             'G': 'C',
             'C': 'G'
         }
-
-    def __repr__(self):
-        return f'{type(self).__name__}(seq="{self.seq[0:10]}...")'
 
     def transcribe_dna(self):
         """
