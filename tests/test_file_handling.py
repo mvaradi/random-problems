@@ -19,10 +19,8 @@ class TestFileHandler(TestCase):
             FileHandler('missing.txt').load_sequence()
 
     def test_load_fasta(self):
-        os.system('echo ">asd" > tmp.fasta')
-        os.system('echo FOO >> tmp.fasta')
-        os.system('echo ">bar" >> tmp.fasta')
-        os.system('echo ASD >> tmp.fasta')
+        with open('tmp.fasta', 'w') as tmp:
+            tmp.write('>asd\nFOO\n>bar\nASD')
         seq = FileHandler('tmp.fasta').load_fasta()
         self.assertEqual(seq, {'asd': 'FOO', 'bar': 'ASD'})
         os.system('rm tmp.fasta')
