@@ -12,10 +12,12 @@ and 'T' occur in s.
 """
 
 import sys
-from rosalind.file_handling import load_sequence
+
+from rosalind.file_handling import FileHandler
 from rosalind.sequence_manipulation import DNA
 
-dna = DNA(load_sequence(sys.argv[1]))
+fh = FileHandler(path=sys.argv[1])
+dna = DNA(fh.load_sequence())
 bases = dna.count_bases()
 print('%i %i %i %i' % (
     bases['A'],

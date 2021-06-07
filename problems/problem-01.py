@@ -14,9 +14,10 @@ Example output: GAUGGAACUUGACUACGUAAAUU
 """
 
 import sys
-from rosalind.file_handling import load_sequence
+from rosalind.file_handling import FileHandler
 from rosalind.sequence_manipulation import DNA
 
-dna = DNA(load_sequence(sys.argv[1]))
+fh = FileHandler(path=sys.argv[1])
+dna = DNA(fh.load_sequence())
 dna.transcribe_dna()
 print(dna.trans_seq)
