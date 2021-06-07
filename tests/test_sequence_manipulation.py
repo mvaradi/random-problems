@@ -1,5 +1,5 @@
 from unittest import TestCase
-from rosalind.sequence_manipulation import DNA
+from rosalind.sequence_manipulation import DNA, RNA
 
 
 class TestDNAHandling(TestCase):
@@ -34,9 +34,14 @@ class TestDNAHandling(TestCase):
     def test_count_point_mutations(self):
         dna_seq = 'GAGCCTACTAACGGGAT'
         variant = 'CATCGTAATGACGGCCT'
-        dna = DNA(dna_seq=dna_seq)
+        dna = DNA(seq=dna_seq)
         self.assertEqual(dna.count_point_mutations(variant), 7)
 
     def test_repr(self):
         dna = DNA('GAGCCTACTAACGGGAT')
-        self.assertEqual(str(dna), 'DNA(dna_seq="GAGCCTACTA...")')
+        self.assertEqual(str(dna), 'DNA(seq="GAGCCTACTA...")')
+
+    def test_translate(self):
+        rna = RNA(seq='AUGGCCAUGGCGCCCAGAACUGAGAUCAAUAGUACCCGUAUUAACGGGUGA')
+        rna.translate()
+        self.assertEqual(rna.protein_seq, 'MAMAPRTEINSTRING')
