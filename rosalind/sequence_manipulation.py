@@ -48,6 +48,17 @@ class Sequence:
         for base in self.seq:
             self.comp_seq = self.mapping[base] + self.comp_seq
 
+    def find_motif(self, motif):
+        """
+        Find a motif (i.e. sequence) within a DNA/RNA sequence and return all the position
+        indices
+        """
+        indices = []
+        for i in range(len(self.seq) - len(motif) + 1):
+            if self.seq[i:i+len(motif)] == motif:
+                indices.append(i+1)
+        return indices
+
 
 class DNA(Sequence):
     """
