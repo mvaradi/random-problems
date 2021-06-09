@@ -45,3 +45,8 @@ class TestDNAHandling(TestCase):
         rna = RNA(seq='AUGGCCAUGGCGCCCAGAACUGAGAUCAAUAGUACCCGUAUUAACGGGUGA')
         rna.translate()
         self.assertEqual(rna.protein_seq, 'MAMAPRTEINSTRING')
+
+    def test_find_motif(self):
+        dna = DNA(seq='GATATATGCATATACTT')
+        motif = 'ATAT'
+        self.assertEqual(dna.find_motif(motif), [2, 4, 10])
